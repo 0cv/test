@@ -80,7 +80,7 @@ function findCurrentGitserver(connection, allGitservers) {
 //topFolder: folder where the metadata are saved temporarily
 //onlyPull: whether or not delete the files once they are retrieved. In most cases, we delete them
 //          so that we only keep the information in .git
-export async function retrieveMetadataFromGit(connections, topFolder, onlyPull) {
+export async function retrieveMetadataFromGit(connections, topFolder, onlyPull, fetch) {
   await rimrafAsync(topFolder)
   await fs.mkdirAsync(topFolder)
 
@@ -97,14 +97,14 @@ export async function retrieveMetadataFromGit(connections, topFolder, onlyPull) 
     users.set(user._id.toString(), user)
   }
 
-  connections = await Promise.join(...connections.map((connection) => pullMetadata(connection, topFolder, onlyPull, users)))
+  connections = await Promise.join(...connections.map((connection) => pullMetadata(connection, topFolder, onlyPull, users, fetch)))
 
   //filter remaining connections
   return connections.filter((conn) => conn)
 }
 
 //this method literally pull metadata from Salesforce. It's called for each Connection
-async function pullMetadata(connection, topFolder, onlyPull, users) {
+async function pullMetadata(connection, topFolder, onlyPull, users, fetch) {
   let gitusername,
     pfad = path.join(topFolder, connection._id.toString()),
     gitServer = findCurrentGitserver(connection, globalAllGitServers)
@@ -150,17 +150,40 @@ async function pullMetadata(connection, topFolder, onlyPull, users) {
     return
   }
 
-  console.info('git pull', `cd ${pfad} && git pull --depth 1 ${sshURL} ${connection.branch ? connection.branch : 'master'}`)
-  try {
-    await execAsync(`cd ${pfad} && git pull --depth 1 ${sshURL} ${connection.branch ? connection.branch : 'master'}`, {
-      maxBuffer: Infinity
-    })
-  } catch(e) {
-    console.error('sfdcToGit.retrieveMetadataFromGit.gitPull:', e)
-    //we return the connection because this error may occur simply because the folder does not
-    //exist yet. Therefore, the process shall continue.
-    return connection
+  if(fetch) {
+    console.info('git fetch master', `cd ${pfad} && git fetch ${sshURL} master:master --update-head-ok`)
+    try {
+      await execAsync(`cd ${pfad} && git fetch ${sshURL} master:master --update-head-ok`, {
+        maxBuffer: Infinity
+      })
+    } catch(e) {
+      console.error('sfdcToGit.retrieveMetadataFromGit.gitFetch1:', e)
+      return connection
+    }
+
+    console.info('git fetch branch', `cd ${pfad} && git fetch ${sshURL} ${connection.branch}:${connection.branch} --update-head-ok`)
+    try {
+      await execAsync(`cd ${pfad} && git fetch ${sshURL} ${connection.branch}:${connection.branch} --update-head-ok`, {
+        maxBuffer: Infinity
+      })
+    } catch(e) {
+      console.error('sfdcToGit.retrieveMetadataFromGit.gitFetch2:', e)
+      return connection
+    }
+  } else {
+    console.info('git pull', `cd ${pfad} && git pull --depth 1 ${sshURL} ${connection.branch ? connection.branch : 'master'}`)
+    try {
+      await execAsync(`cd ${pfad} && git pull --depth 1 ${sshURL} ${connection.branch ? connection.branch : 'master'}`, {
+        maxBuffer: Infinity
+      })
+    } catch(e) {
+      console.error('sfdcToGit.retrieveMetadataFromGit.gitPull:', e)
+      //we return the connection because this error may occur simply because the folder does not
+      //exist yet. Therefore, the process shall continue.
+      return connection
+    }
   }
+
 
   if (onlyPull) {
     return connection

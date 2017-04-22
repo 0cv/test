@@ -159,4 +159,16 @@ export class EditConnectionComponent implements OnDestroy, OnInit {
       })
     }
   }
+
+  toggle(ischecked) {
+    if(ischecked) {
+      this.form.patchValue({
+        componenttypes: this.optionComponentTypes
+      })
+    } else {
+      this.form.patchValue({
+        componenttypes: []
+      })
+    }
+  }
 }

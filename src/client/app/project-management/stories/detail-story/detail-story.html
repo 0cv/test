@@ -13,6 +13,15 @@
         (renderTreeColumn)="renderTreeColumn($event)"
       ></fancytree>
     </div>
+    <div class="git" *ngIf="story?.repository && story?.branch">
+      <md-input-container>
+        <input mdInput placeholder="Commit message (default to Heroku Commit)" [(ngModel)]="commitMessage">
+      </md-input-container>
+      <br/>
+      <a md-raised-button (click)="commitToBranch()" [disabled]="isLoading || initialLoadBufferValue < 100">
+        {{'Commit to ' + (story.organization?(story.organization + '/'): '') + story.repository + ':' + story.branch}}
+      </a>
+    </div>
     <div class="control">
       <md-card *ngIf="syncingStatus">
         <span [innerHTML]="syncingStatus"></span>
