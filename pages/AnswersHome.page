@@ -1,0 +1,12 @@
+<apex:page >
+<apex:includeScript value="/lightning/lightning.out.js" />
+<apex:includeLightning />
+
+<div id="lightning" />
+
+<script>
+    $Lightning.use("c:Main", function() {
+    	$Lightning.createComponent("c:AccountsList", {}, "lightning");
+    });
+</script>
+</apex:page>
