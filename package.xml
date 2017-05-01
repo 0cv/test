@@ -61,6 +61,14 @@
         <name>CustomObject</name>
     </types>
     <types>
+        <members>group1</members>
+        <name>DelegateGroup</name>
+    </types>
+    <types>
+        <members>Account.Acc</members>
+        <name>DuplicateRule</name>
+    </types>
+    <types>
         <members>Account.AllAccounts</members>
         <members>Account.MyAccounts</members>
         <members>Account.NewLastWeek</members>
