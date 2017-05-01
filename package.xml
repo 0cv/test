@@ -5,10 +5,6 @@
         <name>ApexPage</name>
     </types>
     <types>
-        <members>Pebble_Post_Action</members>
-        <name>ApexTrigger</name>
-    </types>
-    <types>
         <members>Case</members>
         <name>AutoResponseRules</name>
     </types>
@@ -17,23 +13,20 @@
         <name>CompactLayout</name>
     </types>
     <types>
-        <members>Account.Account_Type__c</members>
         <members>Account.AccountNumber</members>
         <members>Account.AccountSource</members>
+        <members>Account.Account_Type__c</members>
         <members>Account.AnnualRevenue</members>
         <members>Account.BillingAddress</members>
         <members>Account.CustomerPriority__c</members>
         <members>Account.Description</members>
         <members>Account.Email__c</members>
-        <members>Account.encrypted__c</members>
         <members>Account.ExternalId__c</members>
         <members>Account.Fax</members>
         <members>Account.Industry</members>
-        <members>Account.isCaseRelevant__c</members>
         <members>Account.IsCustomerPortal</members>
         <members>Account.IsExcludedFromRealign</members>
         <members>Account.IsPartner</members>
-        <members>Account.j_Checkbox__c</members>
         <members>Account.Jigsaw</members>
         <members>Account.Name</members>
         <members>Account.New_Field__c</members>
@@ -44,19 +37,22 @@
         <members>Account.ParentId</members>
         <members>Account.Phone</members>
         <members>Account.Rating</members>
+        <members>Account.SLAExpirationDate__c</members>
+        <members>Account.SLASerialNumber__c</members>
+        <members>Account.SLA__c</members>
         <members>Account.ShippingAddress</members>
         <members>Account.Sic</members>
         <members>Account.SicDesc</members>
         <members>Account.Site</members>
-        <members>Account.SLA__c</members>
-        <members>Account.SLAExpirationDate__c</members>
-        <members>Account.SLASerialNumber__c</members>
-        <members>Account.test_user_del__c</members>
         <members>Account.TickerSymbol</members>
-        <members>Account.timestamp__c</members>
         <members>Account.Type</members>
         <members>Account.UpsellOpportunity__c</members>
         <members>Account.Website</members>
+        <members>Account.encrypted__c</members>
+        <members>Account.isCaseRelevant__c</members>
+        <members>Account.j_Checkbox__c</members>
+        <members>Account.test_user_del__c</members>
+        <members>Account.timestamp__c</members>
         <members>Account.z_Checkbox__c</members>
         <name>CustomField</name>
     </types>
