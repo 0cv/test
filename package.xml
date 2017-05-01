@@ -4,8 +4,10 @@
         <members>A</members>
         <members>B</members>
         <members>C</members>
+        <members>chatter_answers_question_escalation_to_case_trigger</members>
         <members>D</members>
         <members>E</members>
+        <members>onAccount</members>
         <name>ApexTrigger</name>
     </types>
     <version>39.0</version>
