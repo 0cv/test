@@ -5,6 +5,10 @@
         <name>ApexPage</name>
     </types>
     <types>
+        <members>Case</members>
+        <name>AutoResponseRules</name>
+    </types>
+    <types>
         <members>Account.newcompactlayout</members>
         <name>CompactLayout</name>
     </types>
