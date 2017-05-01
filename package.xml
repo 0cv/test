@@ -5,6 +5,10 @@
         <name>ApexPage</name>
     </types>
     <types>
+        <members>Pebble_Post_Action</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
         <members>Case</members>
         <name>AutoResponseRules</name>
     </types>
