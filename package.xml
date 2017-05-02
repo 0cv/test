@@ -11,5 +11,22 @@
         <members>onAccountContactRelation</members>
         <name>ApexTrigger</name>
     </types>
+    <types>
+        <members>AccountsList/AccountsList</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>Milestone 1</members>
+        <members>Milestone 2</members>
+        <name>MilestoneType</name>
+    </types>
+    <types>
+        <members>com3</members>
+        <name>Network</name>
+    </types>
+    <types>
+        <members>Admin</members>
+        <name>Profile</name>
+    </types>
     <version>39.0</version>
 </Package>
