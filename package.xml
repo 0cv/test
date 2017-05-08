@@ -2,8 +2,13 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>ChatterAnswersEscalationTriggerTest</members>
+        <members>CommunitiesLandingController</members>
         <members>CommunitiesLoginController</members>
         <name>ApexClass</name>
+    </types>
+    <types>
+        <members>ChangePassword</members>
+        <name>ApexPage</name>
     </types>
     <types>
         <members>A</members>
