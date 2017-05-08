@@ -6,7 +6,7 @@
     </fields>
     <fields>
         <fullName>AccountSource</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
+        <trackFeedHistory>true</trackFeedHistory>
         <type>Picklist</type>
     </fields>
     <fields>
